@@ -1,0 +1,12 @@
+# === OS / Editor ===
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# === Secrets (repo-wide safety net) ===
+.env
+.env.*
+!.env.example
+*.pem
+*.key

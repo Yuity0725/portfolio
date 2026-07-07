@@ -52,7 +52,7 @@ variable "schedule_expression" {
 
 locals {
   common_tags = {
-    Project = "lime-platform"
+    Project = "grading-ops-platform"
     Service = var.name
     Env     = var.env
     Managed = "terraform"

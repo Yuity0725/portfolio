@@ -88,7 +88,7 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for diagrams and **[TECH_STACK.md](TE
 ## Repository layout / このリポジトリの構成
 
 ```
-it-service/
+modular-monolith-api/
 ├── README.md            # 本書 / this file
 ├── ARCHITECTURE.md      # 構成図（Mermaid）と設計判断 / diagrams & design decisions
 ├── TECH_STACK.md        # 技術スタック一覧 / full tech stack table

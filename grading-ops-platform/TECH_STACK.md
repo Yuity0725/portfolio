@@ -1,6 +1,6 @@
 # Tech Stack / 技術スタック
 
-The stack used across the LIME Platform (1 frontend + 2 backends). Versions reflect the majors used in the project; they are drawn from the dependency manifests (`package.json`, `requirements.txt`, `go.mod`).
+The stack used across the Grading Operations Platform (1 frontend + 2 backends). Versions reflect the majors used in the project; they are drawn from the dependency manifests (`package.json`, `requirements.txt`, `go.mod`).
 プラットフォーム全体（フロントエンド1 + バックエンド2）で使用した技術一覧。バージョンは各依存マニフェスト（`package.json` / `requirements.txt` / `go.mod`）で用いたメジャー系を記載。
 
 ---

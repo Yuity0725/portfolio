@@ -1,4 +1,4 @@
-# LIME Platform
+# Grading Operations Platform
 
 > A full-stack internal operations platform for an education / e-learning company's answer-sheet grading (答案添削) business — one Next.js frontend and two backends (a Django REST API and a set of Go/Python async services) unified by a single Cognito SSO identity.
 >
@@ -16,7 +16,7 @@ A production platform that runs the day-to-day operations of an answer-sheet gra
 
 The system is deliberately split into **three deployables** that share one identity:
 
-- **LIME frontend** — a Next.js / TypeScript SPA (Atomic Design, Storybook) for staff, authenticated with Cognito via AWS Amplify.
+- **Frontend** — a Next.js / TypeScript SPA (Atomic Design, Storybook) for staff, authenticated with Cognito via AWS Amplify.
 - **Main API** — a Django REST Framework service on **ECS Fargate**. It owns the business data and offloads heavy jobs (answer-sheet image processing, bulk operations) to **SQS → Lambda** workers.
 - **ADPAL & auto-return** — Go API gateways + Python batch workers for **asynchronous answer-sheet search & return**, with a long-running **auto-return pipeline** orchestrated by **AWS Step Functions + EventBridge**, all provisioned with **Terraform** across multiple environments.
 
@@ -42,7 +42,7 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for diagrams and **[TECH_STACK.md](TE
 
 そこで本システムは、**1つのIDで束ねた3つのデプロイ対象**に意図的に分割しています。
 
-- **LIMEフロントエンド** — スタッフ向けのNext.js / TypeScript製SPA（Atomic Design・Storybook）。AWS Amplify経由でCognito認証。
+- **フロントエンド** — スタッフ向けのNext.js / TypeScript製SPA（Atomic Design・Storybook）。AWS Amplify経由でCognito認証。
 - **メインAPI** — **ECS Fargate**上で動くDjango REST Framework。業務データを保持し、重い処理（答案画像処理・一括操作）を**SQS → Lambda**ワーカーへ委譲。
 - **ADPAL・自動返却** — **非同期の答案検索・返却**を担うGo製APIゲートウェイ＋Pythonバッチワーカー。長時間の**自動返却パイプライン**を**AWS Step Functions + EventBridge**でオーケストレーションし、全体を**Terraform**でマルチ環境にプロビジョニング。
 
@@ -96,7 +96,7 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for diagrams and **[TECH_STACK.md](TE
 ## Repository layout / このリポジトリの構成
 
 ```
-lime-platform/
+grading-ops-platform/
 ├── README.md            # 本書 / this file
 ├── ARCHITECTURE.md      # 構成図（Mermaid）と設計判断 / diagrams & design decisions
 ├── TECH_STACK.md        # 技術スタック一覧 / full tech stack table

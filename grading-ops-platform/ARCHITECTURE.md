@@ -10,7 +10,7 @@ All identifiers below (account IDs, endpoints, hostnames, ARNs, pool/client IDs)
 ```mermaid
 flowchart TB
     subgraph Client["Client / クライアント"]
-        UI["LIME Frontend<br/>Next.js / TypeScript (Amplify Hosting)"]
+        UI["Frontend<br/>Next.js / TypeScript (Amplify Hosting)"]
     end
 
     subgraph Identity["Identity / 認証"]
@@ -102,7 +102,7 @@ flowchart LR
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as LIME Frontend
+    participant U as Frontend
     participant C as Cognito
     participant G as ADPAL Gateway (Go / Lambda)
     participant D as DynamoDB

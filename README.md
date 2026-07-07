@@ -13,6 +13,7 @@
 | # | Project / プロジェクト | 概要 / Summary | 主な技術 / Stack |
 | --- | --- | --- | --- |
 | 01 | [civic-document-ai-platform](civic-document-ai-platform/) | 日本の行政公開文書をAIで横断検索・要約・深掘り分析する基盤 / AI cross-search, RAG chat & deep-research for Japanese public-sector documents | Next.js・FastAPI・Mastra・AWS Serverless・OpenSearch(Sudachi)・TiDB・Gemini・Terraform |
+| 02 | [math_optimizer_agent](math_optimizer_agent/) | LLMが自然言語の依頼から数理最適化アルゴリズムを選び、製造工程DAGを最適化するエージェントのデモ / LLM agent that picks a math-optimization algorithm from a natural-language request and optimizes a manufacturing-process DAG | Python・Streamlit・pydantic-ai・NetworkX・OpenAI |
 
 <!--
 新しいプロジェクトを追加したら、上の表に1行足してください。

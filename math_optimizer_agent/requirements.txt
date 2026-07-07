@@ -1,0 +1,6 @@
+streamlit>=1.36
+streamlit-agraph>=0.0.45
+pydantic-ai>=0.0.14
+pydantic>=2.7
+python-dotenv>=1.0
+networkx>=3.2

@@ -19,7 +19,7 @@ Public-sector text is full of domain-specific compound nouns. Naive tokenization
   日本語を意味単位で正しく分かち書きし、制度固有語はユーザー辞書で1語として扱う。辞書は自動生成・自動更新される（→ [05. 辞書自動管理](05-dictionary-automation.md)）。
 
 - **機能別の独立インデックス設計**
-  議事録 / 計画資料 / 計画本文 / 省庁文書 を別インデックスで管理（例: `minutes_full` / `plans` / `plan_documents` / `gov_documents`）。文書種別ごとにアナライザ・マッピング・スコアリングを個別最適化でき、1つの巨大インデックスに詰め込むより検索品質と運用性が高い。
+  議事録 / 計画資料 / 計画本文 / 省庁文書 を別インデックスで管理。文書種別ごとにアナライザ・マッピング・スコアリングを個別最適化でき、1つの巨大インデックスに詰め込むより検索品質と運用性が高い。
 
 - **検索DSLのライブラリ化（Pydantic）**
   クエリ組み立てを型付きの共通ライブラリに抽象化し、各API/バッチから再利用。リクエスト/レスポンスはすべて `BaseModel`（[pydantic_models.py](../snippets/pydantic_models.py) 参照）で表現し、`Any` を排除して境界でバリデーション。

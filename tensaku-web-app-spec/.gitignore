@@ -1,0 +1,12 @@
+# === Secrets & credentials (safety net — this repo should never contain these) ===
+.env*
+!.env.example
+*.pem
+*.key
+
+# === Python ===
+__pycache__/
+*.py[cod]
+
+# === OS / Editor ===
+.DS_Store

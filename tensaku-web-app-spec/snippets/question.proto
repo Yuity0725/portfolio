@@ -1,0 +1,79 @@
+// 答案採点の設問・採点基準スキーマ（技術デモ用の匿名サンプル）。
+//
+// このファイルはポートフォリオ用に書き起こした簡略版であり、実運用コードではない。
+// 契約ファースト設計における「言語非依存のデータ契約」の意図を示す:
+//   - 設問は再帰ツリー（大問 → 小問）
+//   - 採点基準 = 加点グループ（排他）＋ 減点
+//   - 点数 / 採点記号 / コメントの描画位置を座標で保持
+//
+// フィールド名・ID・値はすべて一般的な例（プレースホルダ）。
+
+syntax = "proto3";
+
+package grading.v1;
+
+// 設問の解答形式。
+enum QuestionFormat {
+  QUESTION_FORMAT_UNSPECIFIED = 0;
+  QUESTION_FORMAT_CHOICE = 1;        // 選択式
+  QUESTION_FORMAT_SHORT_ANSWER = 2;  // 短答式
+  QUESTION_FORMAT_FREE = 3;          // 自由記述
+  QUESTION_FORMAT_UNANSWERABLE = 4;  // 回答不可（採点対象外）
+}
+
+// 答案上の描画位置（ページ＋座標）。
+message Position {
+  uint32 page = 1;
+  float x = 2;
+  float y = 3;
+}
+
+// 選択式の選択肢。
+message Option {
+  string id = 1;
+  string label = 2;
+}
+
+// 加点（1観点あたりの得点）。
+message Addition {
+  string addition_id = 1;
+  string description = 2;
+  uint32 amount = 3;
+  // 加点条件となる選択肢の組み合わせ（選択式のとき）。
+  repeated string option_combination = 4;
+}
+
+// 減点。
+message Deduction {
+  string deduction_id = 1;
+  string description = 2;
+  uint32 amount = 3;
+}
+
+// 排他な加点の集合: グループ内から高々1つだけ加点される。
+message AdditionGroup {
+  repeated Addition additions = 1;
+}
+
+// 採点基準: 加点グループ（排他）＋減点。
+message Criterion {
+  repeated AdditionGroup addition_groups = 1;
+  repeated Deduction deductions = 2;
+}
+
+// 設問（再帰ツリー: 大問 → 小問）。
+message Question {
+  string id = 1;
+  string description = 2;
+  uint32 max_score = 3;
+  QuestionFormat format = 4;
+
+  repeated Option options = 5;       // 選択式のとき
+  repeated Criterion criteria = 6;   // 採点基準
+  repeated Question children = 7;    // 小問（末端が実際の採点対象）
+
+  // 描画位置（任意）。
+  Position score_position = 8;
+  Position mark_position = 9;
+  Position comment_position = 10;
+}

@@ -14,6 +14,7 @@
 | --- | --- | --- | --- |
 | 01 | [civic-document-ai-platform](civic-document-ai-platform/) | 日本の行政公開文書をAIで横断検索・要約・深掘り分析する基盤 / AI cross-search, RAG chat & deep-research for Japanese public-sector documents | Next.js・FastAPI・Mastra・AWS Serverless・OpenSearch(Sudachi)・TiDB・Gemini・Terraform |
 | 02 | [math_optimizer_agent](math_optimizer_agent/) | LLMが自然言語の依頼から数理最適化アルゴリズムを選び、製造工程DAGを最適化するエージェントのデモ / LLM agent that picks a math-optimization algorithm from a natural-language request and optimizes a manufacturing-process DAG | Python・Streamlit・pydantic-ai・NetworkX・OpenAI |
+| 03 | [local-llm-inference-platform](local-llm-inference-platform/) | NVIDIA DGX Spark 2ノード上のオンプレLLM推論基盤の設計・構築・運用 / Design & operation of an on-prem LLM inference platform on a 2-node NVIDIA DGX Spark cluster | llama.cpp・vLLM・Ray・nginx・CUDA 13 (ARM64/`sm_121`)・GGUF/FP8・Pydantic |
 
 <!--
 新しいプロジェクトを追加したら、上の表に1行足してください。

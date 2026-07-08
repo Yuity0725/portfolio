@@ -5,7 +5,7 @@ Per-topic write-ups focusing on the engineering decisions and their rationale.
 
 | # | Feature / 機能 | What it shows / 見どころ |
 | --- | --- | --- |
-| 01 | [Multi-Backend Strategy / マルチバックエンド戦略](01-multi-backend-strategy.md) | llama.cpp vs vLLM vs SGLang の技術選定と使い分け基準 |
+| 01 | [Multi-Backend Strategy / マルチバックエンド戦略](01-multi-backend-strategy.md) | llama.cpp vs vLLM vs SGLang の実測比較と、KVキャッシュ再利用を決め手にしたSGLang本番採用 |
 | 02 | [Distributed Inference / 分散推論](02-distributed-inference.md) | TP・データ並列レプリカ・RPC分散の3方式比較と選択フレームワーク |
 | 03 | [CUDA on ARM64 Build / ARM64+CUDAビルド](03-cuda-arm-build.md) | GB10（`sm_121`, CUDA 13, Grace/aarch64）向けビルドの要点 |
 | 04 | [Model Ops / モデルオペレーション](04-model-ops.md) | 量子化選定・HF CLI取得・ノード間同期・整合性検証 |

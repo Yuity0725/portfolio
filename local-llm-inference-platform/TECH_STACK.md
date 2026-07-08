@@ -16,11 +16,11 @@ The stack used across the inference platform. Versions reflect what was actually
 
 | Technology | Version | Purpose / 用途 |
 | --- | --- | --- |
-| llama.cpp (llama-server) | b8xxx 系 CUDAビルド | 主力エンジン。GGUF量子化モデルのOpenAI互換サービング・連続バッチング |
+| SGLang | Docker | **大量バッチ処理パイプラインの本番バックエンド**。RadixAttentionによるKVキャッシュ自動再利用（同一プロンプト×類似文書で効果大） |
+| llama.cpp (llama-server) | b8xxx 系 CUDAビルド | 開発・検証・単発推論の主力。GGUF量子化モデルのOpenAI互換サービング・連続バッチング |
 | llama.cpp RPC (rpc-server) | 同上（`GGML_RPC=ON`ビルド） | 単一巨大モデルの2ノード分割（PoC） |
 | vLLM | NVIDIA NGC コンテナ | 70B級モデルのサービング（FP8 / safetensors） |
 | Ray | vLLM同梱 | 2ノードクラスタ化・Tensor Parallel実行基盤 |
-| SGLang | Docker | 比較検証用バックエンド |
 | nginx | distro標準 | データ並列レプリカのロードバランサ（ラウンドロビン） |
 
 ## Models / モデル

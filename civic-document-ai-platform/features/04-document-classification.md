@@ -70,6 +70,9 @@ flowchart LR
 - **評価パイプライン**
   人手評価データを正解として micro/macro の Precision・Recall・F1 と完全一致率、バインド失敗数を自動算出し、プロンプト・モデル変更の効果を定量比較できるようにした。
 
+- **本番の大量処理パイプラインはSGLangを採用**
+  実験はllama-serverで開始したが、本ワークロードは「同一のsystemプロンプト × 類似形式の文書」を大量に流すため、**RadixAttentionによるKVキャッシュ（プレフィックスキャッシュ）の自動再利用**の効果が支配的と判断し、最終的に推論バックエンドとして**SGLang**を採用。クライアントをOpenAI互換APIで統一していたため、切り替えは接続先の変更だけで済んだ。
+
 ### 分類フロー / Classification flow
 
 ```mermaid
@@ -77,7 +80,7 @@ flowchart LR
     CSV[分類体系CSV<br/>taxonomy] --> S[Pydanticスキーマ<br/>動的生成 dynamic schema]
     CSV --> P[プロンプト組み立て<br/>類型定義 + few-shot]
     D[文書 document] --> P
-    P --> L[llama-server<br/>GBNF constrained decoding]
+    P --> L[推論サーバ<br/>constrained decoding<br/>llama-server → SGLang]
     S --> L
     L --> B[Pydantic bind<br/>model_validate_json]
     B --> T[(タグ格納<br/>multi-label tags)]
@@ -88,5 +91,5 @@ flowchart LR
 
 - 制約デコードによりスキーマ準拠率100%を実機で確認し、「JSONで返して」と指示するだけの運用を排除
 - 政令指定都市を含む3自治体・全量約16,000件規模の文書を、外部APIに出さずローカル推論のみで分類できる目処を実測ベースで確立
-- 実験ハーネスはその後、複数推論エンドポイントへのファンアウトとDB連携（パラメータバインド・冪等な書き込み・チャンク単位コミット）を備えた本番パイプラインへ発展
+- 実験ハーネスはその後、複数推論エンドポイントへのファンアウトとDB連携（パラメータバインド・冪等な書き込み・チャンク単位コミット）を備えた本番パイプライン（推論バックエンドは**SGLang**）へ発展
 - **使い分け**: 判断根拠の説明とルールの直接調整が必要な場面はルールベース、類型数が多く文脈理解が必要なマルチラベル分類はローカルLLM、と役割を分担する

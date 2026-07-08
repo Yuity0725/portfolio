@@ -40,13 +40,13 @@ portfolio/
 
 各プロジェクトは自己完結しており、それぞれの `README.md` から詳細（アーキテクチャ・技術スタック・機能解説など）をたどれます。
 Each project is self-contained; start from its own `README.md` to explore architecture, tech stack, and feature deep-dives.
-
+<!--
 ### 新しいプロジェクトの追加 / Adding a new project
 
 1. `portfolio/<project-name>/` を作成し、コードやドキュメントを配置 / create the directory and add its files
 2. 各プロジェクト直下に `README.md` を用意 / add a project-level `README.md`
 3. 上の **Projects** 表に1行追加 / append a row to the **Projects** table above
-
+-->
 ---
 
 ## Note / 注記

@@ -24,4 +24,4 @@ node_modules/
 dist/
 build/
 
-.xlsx
+*.xlsx
